@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "AndPluginLoadedApkTalk"
 include ':app'
+include ':loadedapk_host'
+include ':loadedapk_plugin'
