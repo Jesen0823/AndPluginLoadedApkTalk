@@ -36,7 +36,7 @@ ActivityThread ---> mH LAUNCH_ACTIVITY(自己处理LoaderApk中的ClassLoader)
                 } break;
 
 ```
-![加载入口](./images/README-1630915939545.png)
+![加载入口](./images/README-1630915939545.webp)
 
 **说明：**
 1. 缓存中的 final ArrayMap<String, WeakReference<LoadedApk>> mPackages 默认保存的是宿主的LoadedApk
@@ -44,13 +44,13 @@ ActivityThread ---> mH LAUNCH_ACTIVITY(自己处理LoaderApk中的ClassLoader)
 
 LoadedApk中保存了宿主的LoadedApk.ClassLoader，用来加载宿主中的class，只能加载宿主的class。
 
-![2021-09-06_153645.png](./images/README-1630915385989.png)
+![2021-09-06_153645.webp](./images/README-1630915385989.webp)
 
 
 以上代码结论：宿主的LoadedApk.ClassLoader 去加载 宿主中的class，然后实例化Activity。
 
 * API28以上的变化，采用AIDL跨进程方式：
-![2021-09-06_150724.png](./images/README-1630916035899.png)
+![2021-09-06_150724.webp](./images/README-1630916035899.webp)
 
 
 ### LoadedApk插件化
@@ -60,10 +60,18 @@ LoadedApk中保存了宿主的LoadedApk.ClassLoader，用来加载宿主中的cl
     1.自定义一个 LoadedApk 然后保存到 mPackages
     2.Packages.value取出 插件专用的LoadedApk.ClassLoader，用来实例化插件Activity
     
-    ![LoadedApk插件化流程](./images/README-1630915767847.png)
+    ![LoadedApk插件化流程](./images/README-1630915767847.webp)
+
+
+   * **自定义LoaderApk 和 ClassLoader**
+
+   ![自定义插件ClassLoader并添加](./images/README-1630931175257.png)
 
 
 
+   * **插件绕过PMS检测**
+
+   ![绕过与检测](./images/README-1630928512937.webp)
 
 
 
